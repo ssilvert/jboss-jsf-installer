@@ -1,0 +1,139 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-parent</artifactId>
+        <version>9</version>
+    </parent>
+
+    <groupId>org.jboss.as</groupId>
+    <artifactId>jsf-installer</artifactId>
+    <version>7.2.0.Alpha1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>jsf-installer</name>
+    <description>Creates a CLI deployment archive that can install new JSF versions to JBoss AS7.</description>
+    <url>${jsf-installer.scm.url}</url>
+
+    <licenses>
+        <license>
+            <name>lgpl</name>
+            <url>http://repository.jboss.org/licenses/lgpl-2.1.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:${jsf-installer.scm.connection}</connection>
+        <developerConnection>scm:git:${jsf-installer.scm.connection}</developerConnection>
+        <url>${jsf-installer.scm.url}</url>
+    </scm>
+
+    <issueManagement>
+        <url>https://github.com/ssilvert/jboss-jsf-installer/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <developers>
+        <developer>
+            <email>ssilvert@redhat.com</email>
+            <name>Stan Silvert</name>
+            <url>https://github.com/ssilvert</url>
+            <id>ssilvert</id>
+        </developer>
+    </developers>
+
+    <properties>
+        <jsf-installer.scm.url>https://github.com/ssilvert/jboss-jsf-installer</jsf-installer.scm.url>
+        <jsf-installer.scm.connection>git@github.com:ssilvert/jboss-jsf-installer</jsf-installer.scm.connection>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.as</groupId>
+            <artifactId>jboss-as-jsf-injection</artifactId>
+            <version>${project.version}</version>
+            <exclusions>
+
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>mojarra</id>
+            <properties>
+                <jsf-impl-name>mojarra</jsf-impl-name>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>com.sun.faces</groupId>
+                    <artifactId>jsf-api</artifactId>
+                    <version>${jsf-version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.sun.faces</groupId>
+                    <artifactId>jsf-impl</artifactId>
+                    <version>${jsf-version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <profile>
+            <id>myfaces</id>
+            <properties>
+                <jsf-impl-name>myfaces</jsf-impl-name>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apache.myfaces.core</groupId>
+                    <artifactId>myfaces-impl</artifactId>
+                    <version>${jsf-version}</version>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.apache.myfaces.core</groupId>
+                    <artifactId>myfaces-api</artifactId>
+                    <version>${jsf-version}</version>
+                </dependency>
+
+                <dependency>
+                    <groupId>commons-digester</groupId>
+                    <artifactId>commons-digester</artifactId>
+                    <version>1.8</version>
+                </dependency>
+
+            </dependencies>
+        </profile>
+    </profiles>
+
+    <build>
+        <finalName></finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <finalName>install-${jsf-impl-name}-${jsf-version}</finalName>
+                    <descriptors>
+                        <descriptor>src/main/assembly/src.xml</descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
