@@ -48,6 +48,7 @@
     <properties>
         <jsf-installer.scm.url>https://github.com/ssilvert/jboss-jsf-installer</jsf-installer.scm.url>
         <jsf-installer.scm.connection>git@github.com:ssilvert/jboss-jsf-installer</jsf-installer.scm.connection>
+        <version.jboss.as>${project.version}</version.jboss.as>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -56,7 +57,7 @@
         <dependency>
             <groupId>org.jboss.as</groupId>
             <artifactId>jboss-as-jsf-injection</artifactId>
-            <version>${project.version}</version>
+            <version>${version.jboss.as}</version>
             <exclusions>
 
             </exclusions>
