@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="jboss-as-jsf-injection-${project.version}.jar"/>
+        <resource-root path="../main/jboss-as-jsf-injection-${version.jboss.as}.jar"/>
         <!-- Insert resources here -->
     </resources>
 
