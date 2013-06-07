@@ -10,7 +10,7 @@
 
     <groupId>org.jboss.as</groupId>
     <artifactId>jsf-installer</artifactId>
-    <version>7.2.0.Alpha1-SNAPSHOT</version>
+    <version>8.0.0.Alpha2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>jsf-installer</name>
@@ -49,7 +49,7 @@
         <jsf-installer.scm.url>https://github.com/ssilvert/jboss-jsf-installer</jsf-installer.scm.url>
         <jsf-installer.scm.connection>git@github.com:ssilvert/jboss-jsf-installer</jsf-installer.scm.connection>
         <version.jboss.as>${project.version}</version.jboss.as>
-
+        <version.weld.core>2.0.1.Final</version.weld.core>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
