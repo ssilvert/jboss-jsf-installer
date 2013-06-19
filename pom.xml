@@ -14,7 +14,7 @@
     <packaging>jar</packaging>
 
     <name>jsf-installer</name>
-    <description>Creates a CLI deployment archive that can install new JSF versions to JBoss AS7.</description>
+    <description>Creates a CLI deployment archive that can install new JSF versions to WildFly.</description>
     <url>${jsf-installer.scm.url}</url>
 
     <licenses>
