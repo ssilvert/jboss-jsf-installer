@@ -10,7 +10,7 @@
 
     <groupId>org.jboss.as</groupId>
     <artifactId>jsf-installer</artifactId>
-    <version>8.0.0.Alpha3</version>
+    <version>8.0.0.Alpha4-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>jsf-installer</name>
